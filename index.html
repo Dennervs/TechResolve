@@ -325,7 +325,7 @@
 		<div class="contact-body">
 			<div class="contact-left">
 				<div class="contact-method">
-					<i class="bi bi-telephone-fill fa-lg"></i>
+					<i class="bi bi-telephone-fill fs-4"></i>
 					<div>
 						<strong>Telefone</strong>
 						<a href="tel:+5511999999999">+55 (11) 99999-9999</a>
@@ -333,7 +333,7 @@
 				</div>
 
 				<div class="contact-method">
-					<i class="bi bi-envelope-fill fa-lg"></i>
+					<i class="bi bi-envelope-fill fs-4"></i>
 					<div>
 						<strong>E-mail</strong>
 						<a href="mailto:contato@empresa.com">contato@empresa.com</a>
@@ -341,7 +341,7 @@
 				</div>
 
 				<div class="contact-method">
-					<i class="bi bi-whatsapp fa-lg"></i>
+					<i class="bi bi-whatsapp fs-4"></i>
 					<div>
 						<strong>WhatsApp</strong>
 						<a href="https://wa.me/5511999999999" target="_blank">Abrir conversa</a>
@@ -411,7 +411,7 @@
 												</a>
 											</div>
 											<div class="team-actions justify-content-center">
-												<button type="button" class="btn btn-sm team-portfolio-btn" data-target="#trabalhos" aria-label="Ver Portifólio de Denner">Ver Portifólio</button>
+												<a href="https://dennervs.github.io/Portifolio/index.html" class="btn btn-sm team-portfolio-btn" aria-label="Ver Portifólio de Denner" target="_blank" rel="noopener">Ver Portifólio</a>
 											</div>
 										</div>
 									</div>
@@ -440,7 +440,7 @@
 												</a>
 											</div>
 											<div class="team-actions justify-content-center">
-												<button type="button" class="btn btn-sm team-portfolio-btn" data-target="#trabalhos" aria-label="Ver Portifólio do João">Ver Portifólio</button>
+												<a href="https://jvik19.github.io/site/" class="btn btn-sm team-portfolio-btn" aria-label="Ver Portifólio do João" target="_blank" rel="noopener">Ver Portifólio</a>
 											</div>
 										</div>
 									</div>
@@ -469,7 +469,7 @@
 												</a>
 											</div>
 											<div class="team-actions justify-content-center">
-												<button type="button" class="btn btn-sm team-portfolio-btn" data-target="#trabalhos" aria-label="Ver Portifólio do Guilherme">Ver Portifólio</button>
+												<a href="https://guinsmnt.github.io/portifolio_guilherme/" class="btn btn-sm team-portfolio-btn" aria-label="Ver Portifólio do Guilherme" target="_blank" rel="noopener">Ver Portifólio</a>
 											</div>
 										</div>
 									</div>
@@ -498,7 +498,7 @@
 												</a>
 											</div>
 											<div class="team-actions justify-content-center">
-												<button type="button" class="btn btn-sm team-portfolio-btn" data-target="#trabalhos" aria-label="Ver Portifólio da Claudielly">Ver Portifólio</button>
+												<a href="https://ellen-ctec.github.io/projeto-portifolio/" class="btn btn-sm team-portfolio-btn" aria-label="Ver Portifólio da Claudielly" target="_blank" rel="noopener">Ver Portifólio</a>
 											</div>
 										</div>
 									</div>
@@ -787,32 +787,35 @@
 				else initContact();
 			})();
 
-			// Portfolio buttons: smooth-scroll to #trabalhos
-			(function(){
-				const pBtns = document.querySelectorAll('.team-portfolio-btn');
-				if(!pBtns || pBtns.length===0) return;
-				pBtns.forEach(btn => {
-					btn.setAttribute('tabindex','0');
-					btn.addEventListener('click', (e) => {
-						e.preventDefault();
-						const target = document.querySelector(btn.dataset.target || '#trabalhos');
-						if(target){
-							target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-						}
-					});
-					btn.addEventListener('keydown', (e) => {
-						if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
-					});
-				});
+            // Portfolio buttons: smooth-scroll to #trabalhos (only when data-target is present)
+            (function(){
+                const pBtns = document.querySelectorAll('.team-portfolio-btn');
+                if(!pBtns || pBtns.length===0) return;
+                pBtns.forEach(btn => {
+                    btn.setAttribute('tabindex','0');
+                    const hasTarget = btn.dataset && btn.dataset.target;
+                    if(hasTarget){
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const target = document.querySelector(btn.dataset.target);
+                            if(target){
+                                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        });
+                        btn.addEventListener('keydown', (e) => {
+                            if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+                        });
+                    }
+                });
 
-				// bootstrap collapse hooks to animate toggler
-				const navbar = document.querySelector('.navbar');
-				const navCollapse = document.getElementById('navbarNav');
-				if(navCollapse && navbar){
-					navCollapse.addEventListener('show.bs.collapse', function(){ navbar.classList.add('menu-open'); });
-					navCollapse.addEventListener('hide.bs.collapse', function(){ navbar.classList.remove('menu-open'); });
-				}
-			})();
+                // bootstrap collapse hooks to animate toggler
+                const navbar = document.querySelector('.navbar');
+                const navCollapse = document.getElementById('navbarNav');
+                if(navCollapse && navbar){
+                    navCollapse.addEventListener('show.bs.collapse', function(){ navbar.classList.add('menu-open'); });
+                    navCollapse.addEventListener('hide.bs.collapse', function(){ navbar.classList.remove('menu-open'); });
+                }
+            })();
 
 			// Header interactions: scroll effect and subtle brand micro-tilt
 			(function(){
