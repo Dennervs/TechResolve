@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fontes/Roboto-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}

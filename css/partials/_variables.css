@@ -1,0 +1,9 @@
+:root{
+	--text-color:#777777;
+	--gradient-color: linear-gradient(90deg, #4458dc 0%, #854fee 100%);
+	--roboto: 'Roboto', sans-serif;
+	--title-color: #141313;
+	--box-shadow: 0px 10px 30px rgba(118, 85, 225, 0.3);
+	--border-color:#201f1f17;
+	--primary-color:#854fee;
+}
